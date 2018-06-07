@@ -74,7 +74,7 @@ Now we have a git repo pushed to the cloud.
 # create solution
 dotnet new sln -n SampleApp
 
-# create new webapi project 
+# create new webapi project
 dotnet new webapi -n SampleApp.Api -o SampleApp.Api
 
 # add new project to solution
@@ -232,9 +232,9 @@ import { HttpClient } from '@angular/common/http';
   <h1>Weather forecast</h1>
 
   <p>This component demonstrates fetching data from the server.</p>
-  
+
   <p *ngIf="!forecasts"><em>Loading...</em></p>
-  
+
   <table class='table' *ngIf="forecasts">
     <thead>
       <tr>
@@ -304,7 +304,7 @@ Once npm is done, run our angular app
 ng serve
 ```
 
-The App should get the from the api. Awesome!!!
+The App should get the data from the api. Awesome!!!
 
 At this point, we have all the code locally working. We should probably commit our code before we deploy. Before we do, add the following lines to `.gitignore` since they are not needed.
 
@@ -371,7 +371,7 @@ cd dist
 # zip dist folder, create app service, webapp and deploy
 Compress-Archive -Path * -DestinationPath deployment.zip
 az appservice plan create --name $webSpaName --resource-group $resourceGroup --sku FREE
-az webapp create --name $webSpaName --resource-group $resourceGroup --plan $webSpaName 
+az webapp create --name $webSpaName --resource-group $resourceGroup --plan $webSpaName
 az webapp deployment source config-zip --resource-group $resourceGroup --name $webSpaName --src deployment.zip
 
 # get url of new webapp and open
