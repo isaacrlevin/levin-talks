@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
   <h1>Weather forecast</h1>
 
   <p>This component demonstrates fetching data from the server.</p>
-  
+
   <p *ngIf="!forecasts"><em>Loading...</em></p>
-  
+
   <table class='table' *ngIf="forecasts">
     <thead>
       <tr>
@@ -35,7 +35,7 @@ export class AppComponent {
   public forecasts: WeatherForecast[];
 
   constructor(http: HttpClient) {
-    http.get<WeatherForecast[]>('https://levin-cli-demo-api.azurewebsites.net/api/weather').subscribe(result => {
+    http.get<WeatherForecast[]>('http://localhost:5000/api/weather').subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));
   }

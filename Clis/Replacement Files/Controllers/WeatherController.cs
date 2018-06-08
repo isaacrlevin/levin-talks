@@ -7,9 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace SampleApp.Api.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class WeatherController : ControllerBase
     {
-              private static string[] Summaries = new[]
+        private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };

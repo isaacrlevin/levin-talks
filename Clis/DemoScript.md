@@ -301,7 +301,7 @@ export class AppModule { }
 Once npm is done, run our angular app
 
 ```powershell
-ng serve
+ng serve -o
 ```
 
 The App should get the data from the api. Awesome!!!
@@ -351,14 +351,14 @@ Compress-Archive -Path * -DestinationPath deployment.zip
 az webapp deployment source config-zip --resource-group $resourceGroup --name $webApiName --src deployment.zip
 
 # get the url of the newly deployed app service and open in the browser
-$site2 = az webapp show -n $webApiName -g $resourceGroup --query "defaultHostName" -o tsv
-Start-Process https://$site2
+$site1 = az webapp show -n $webApiName -g $resourceGroup --query "defaultHostName" -o tsv
+Start-Process https://$site1/api/weather
 ```
 
 Before we deploy our Spa, we need to update and test it against the new Api endpoint
 
 ```text
-https://levin-cli-demo-api.azurewebsites.net/api/values/WeatherForecasts
+https://levin-cli-demo-api.azurewebsites.net/api/weather
 ```
 Once validated, we can now build and deploy our Angular App. This process is very similar to deploying the Web Api, except the build process is different as we use Angular Cli to build.
 
