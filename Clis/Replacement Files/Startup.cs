@@ -41,13 +41,15 @@ namespace SampleApp.Api
                 app.UseHsts();
             }
 
-            app.UseCors(x => x
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
-
             app.UseHttpsRedirection();
+
+            app.UseCors(x => x.
+AllowAnyOrigin()
+.AllowAnyMethod()
+.AllowAnyHeader()
+.AllowCredentials());
+
+
             app.UseMvc();
         }
     }
