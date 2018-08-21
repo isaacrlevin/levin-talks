@@ -36,7 +36,7 @@ Go to [GitHub](https://github.com) and create a new repository, capturing the cl
 
 ```cmd
 mkdir SampleApp
-cd SampleAPp
+cd SampleApp
 touch README.md
 ```
 
@@ -53,7 +53,7 @@ Now we create the local repo, add a custom .gitignore and push our local branch 
 git init
 
 # create .gitignore with already provided language/OS templates
-gig visualstudio, angular,windows,linux
+gig visualstudio,visualstudiocode, angular,windows,linux
 
 # adds everything changed from local to staging
 git add .
@@ -183,8 +183,8 @@ After making sure you have nodejs, npm and angular cli installed, run some comma
 
 ```cmd
 # create new minimal angular app without installing node modules or adding git files
-ng new SampleApp.Spa -dir SampleApp.Spa --skip-install --skip-git --minimal
-cd SampleApp.Spa
+ng new sampleapp-spa --skip-install --skip-git --minimal
+cd sampleapp-spa
 
 # install node modules
 npm install
@@ -367,6 +367,7 @@ Once validated, we can now build and deploy our Angular App. This process is ver
 ng build
 $webSpaName="levin-cli-demo-spa"
 cd dist
+cd .\sampleApp-spa
 
 # zip dist folder, create app service, webapp and deploy
 Compress-Archive -Path * -DestinationPath deployment.zip
