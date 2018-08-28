@@ -1,4 +1,4 @@
-cd .\SampleApp.Api
+cd ..\SampleApp\SampleApp.Api
 az login
  az account set --subscription a07802f5-f8df-47d8-9b88-79ba55cfb396
 
@@ -32,12 +32,13 @@ Start-Process https://$site1/api/weather
 
 cd ..
 cd ..
-cd .\SampleApp.Spa
+cd .\sampleApp-spa
 
 # build app with angular cli, this will create a folder called 'dist'
 ng build
 $webSpaName="levin-cli-demo-spa"
 cd dist
+cd .\sampleApp-spa
 
 # zip dist folder, create app service, webapp and deploy
 Compress-Archive -Path * -DestinationPath deployment.zip

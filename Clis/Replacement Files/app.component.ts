@@ -35,7 +35,7 @@ export class AppComponent {
   public forecasts: WeatherForecast[];
 
   constructor(http: HttpClient) {
-    http.get<WeatherForecast[]>('http://localhost:5000/api/weather').subscribe(result => {
+    http.get<WeatherForecast[]>('https://localhost:5001/api/weather').subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));
   }
