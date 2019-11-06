@@ -87,59 +87,7 @@ dotnet run
 
 Open the browser and direct to the below url to see api return
 
-https://localhost:5001/api/values
-
-Let's Add a New Controller in VSCode that is more interesting. Create a new Controller called `Weather`
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-namespace SampleApp.Api.Controllers
-{
-    [Route("api/[controller]")]
-    public class WeatherController : ControllerBase
-    {
-              private static string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            });
-        }
-
-        public class WeatherForecast
-        {
-            public string DateFormatted { get; set; }
-            public int TemperatureC { get; set; }
-            public string Summary { get; set; }
-
-            public int TemperatureF
-            {
-                get
-                {
-                    return 32 + (int)(TemperatureC / 0.5556);
-                }
-            }
-        }
-    }
-}
-```
-
-Now we check the new Api
-http://localhost:5000/api/weather
+https://localhost:5001/weatherforecast
 
 ```json
 [{
@@ -169,6 +117,7 @@ http://localhost:5000/api/weather
     "temperatureF": 66
 }]
 ```
+
 At this point, we have a working Api, we should probably commit our code
 
 ```powershell
@@ -212,8 +161,7 @@ NPM Install will probably take a while, take this time to update some things in 
             app.UseCors(x => x
             .AllowAnyOrigin()
             .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials());
+            .AllowAnyHeader());
 
             app.UseMvc();
         }
@@ -341,7 +289,8 @@ az appservice plan create --name $webApiName --resource-group $resourceGroup --s
 az webapp create --name $webApiName --resource-group $resourceGroup --plan $webApiName
 
 # publish the app with dotnet cli
-dotnet publish -c release -o $publishFolder
+
+dotnet publish -c Release -o $publishFolder -r win-x86 --self-contained true 
 cd publish
 
 # zip artifacts
@@ -352,17 +301,10 @@ az webapp deployment source config-zip --resource-group $resourceGroup --name $w
 
 # get the url of the newly deployed app service and open in the browser
 $site1 = az webapp show -n $webApiName -g $resourceGroup --query "defaultHostName" -o tsv
-Start-Process https://$site1/api/weather
-```
+Start-Process https://$site1/weatherforecast
 
-Before we deploy our Spa, we need to update and test it against the new Api endpoint
+cd YOURSAMPLEAPP
 
-```text
-https://levin-cli-demo-api.azurewebsites.net/api/weather
-```
-Once validated, we can now build and deploy our Angular App. This process is very similar to deploying the Web Api, except the build process is different as we use Angular Cli to build.
-
-```powershell
 # build app with angular cli, this will create a folder called 'dist'
 ng build
 $webSpaName="levin-cli-demo-spa"
