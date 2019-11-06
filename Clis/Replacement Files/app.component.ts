@@ -35,7 +35,7 @@ export class AppComponent {
   public forecasts: WeatherForecast[];
 
   constructor(http: HttpClient) {
-    http.get<WeatherForecast[]>('https://localhost:5001/api/weather').subscribe(result => {
+    http.get<WeatherForecast[]>('https://levin-cli-demo-api.azurewebsites.net/weatherforecast').subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));
   }
