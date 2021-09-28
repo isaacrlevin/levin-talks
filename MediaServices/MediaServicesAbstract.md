@@ -1,3 +1,0 @@
-# Building Your Own YouTube, sort of
-
-Azure Media Services allows an organization to enhance accessibility, distribution, and scalability for video content. By leveraging Media Services, developers have the ability to develop feature rich solutions for video content management. This session will demonstrate the ease to upload and process videos using Azure Functions and Azure Media Services, and deliver these videos in a way where they are view able on the web using Azure Media Player. We will also take a look at leveraging Cognitive Services to enable AI on our Media and seeing the rich insights from it.

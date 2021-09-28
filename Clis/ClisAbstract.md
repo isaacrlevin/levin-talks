@@ -1,5 +1,0 @@
-# How I Learned to Stop Worrying and Love the CLI
-
-In the wild, fast-moving frontier of Web Development, it is hard to navigate the most productive way to build and deploy our applications. May I present an opinionated approach to developing web applications in the new world. Command-line interfaces are as old as time, so why would any sane person reccommend using a handful of them in the modern application development space? The answer is ease of use. During this session, we will use the power of the command line, with some help of Visual Studio Code, to create, develop, build and deploy an application to the cloud. Here is how we are going to accomplish this.
-
-Using Git Bash, Angular CLI, .NET CLI, and the Azure CLI, we will build 2 separate apps, connect them, commit them to a code repository and deploy to the cloud. All with little need to be in an editor at all. Beware attending this presentation may leave you with urges to forgot about GUIs completely.
